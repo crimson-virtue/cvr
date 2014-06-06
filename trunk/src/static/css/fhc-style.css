@@ -92,12 +92,11 @@
     position: relative;
     top: 5px;
     left: -4px;
-    width: 102%;
+    width: 103%;
     max-height: 590px;
+    max-width: 103%;
     height: 590px;
-    overflow-y: auto;   
-    
-    border: rgb( 128,0,0 ) 1px dotted;
+    overflow: auto;   
 }
 
 
@@ -107,11 +106,32 @@
     list-style: none;
 }
 
-.movie-item {
+.movie-list-row {
+    margin:  0;
+    padding: 0;
+    margin-bottom: 2px;
+    height: 18px;
+    line-height: 18px;
     text-align: center;
 }
 
 .movie-item-ref {
+    width: 99%;
+    vertical-align: middle;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
     text-decoration: none;
     font-size: 13px;
+    color: black;
+    border-radius: 7px 7px 7px 7px;
+}
+
+.movie-item-ref:hover {
+    background-color: #F8F8F8; 
+}
+
+.selected-movie {
+    color: #0066FF;
+    background-color: #F8F8F8;
 }

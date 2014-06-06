@@ -22,7 +22,7 @@ def fetchMovies(catalogpath):
     '''
     res = {}
     parser = etree.XMLParser(recover=True)
-    for tag in etree.parse( open(catalogpath),parser ).findall('//Movie'):
+    for tag in etree.parse(open( catalogpath,parser )).findall('//Movie'):
         res[ tag.attrib['Number'] ] = tag.attrib['OriginalTitle']
     return res
 

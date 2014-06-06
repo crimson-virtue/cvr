@@ -3,6 +3,7 @@
 {% block content %}
 <div id='movie-list-wrapper'>
     <div id='movie-list-scroll'>
+        <div id='list-dummy'></div>
     </div>
 </div>
 
@@ -11,16 +12,29 @@
 
 <script>
     var movies = {{ movies|tojson|safe }};
-    var $_mscroll = $('#movie-list-scroll');
+    var $_dummy = $('#list-dummy');
 
     
-    function buildMovieScrollInto(container, movies) {
-        for(var i = 0; i < movies.length; i++){
-            console.log( movies[i] );
+    function buildMovieScrollInto(placeholder, movies) {
+        var result = "<div>";
+        for(var key in movies) {
+            var mtitle = movies[key];
+            result += "<div class='movie-list-row' >"+ 
+                       "<a href='{{url_for( 'movie_for',title='"+ mtitle +"',number='"+ key +"' )}}' class='movie-item-ref' id='"+( key+':'+mtitle )+"' draggable='true' hidefocus='true' >"+ mtitle +"</a>"+
+                       "</div>";
         }
+        result += "</div>";
+        placeholder.replaceWith( result );
     }
 
     
-    buildMovieScrollInto( $_mscroll,movies ); 
+    function onMovieClick( event ) {
+        event.preventDefault();
+        $('.movie-item-ref').removeClass('selected-movie');
+        $(this).addClass('selected-movie');
+    }
+    
+    buildMovieScrollInto( $_dummy,movies ); 
+    $('.movie-item-ref').click( onMovieClick );
 </script>
 {% endblock content %}

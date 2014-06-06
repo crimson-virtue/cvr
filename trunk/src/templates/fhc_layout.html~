@@ -17,7 +17,7 @@
         </span>
         <span id='brand-title-span' class='brand-span'>
             <a href="{{url_for('root')}}" id='brand-title' class='unav-menu-item'>
-                FleecyHome Center
+                FleecyHome Centre
             </a>
         </span>
         

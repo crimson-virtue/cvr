@@ -44,14 +44,17 @@ def root():
 @app.route( '/movies',methods=['GET'] )
 def movies():
     catalogpath = '/'.join( [environ['CATALOGROOT'],environ['CATALOGFILE']] )
-    '''
     if not session.get('movies') or isModified( catalogpath,session.get('lastmod_ts') ):
-        session['movies'] = flask.jsonify(cataloghandl.fetchMovies( catalogpath ))
-        session['lastmod_ts'] = os.path.getmtime( catalogpath )'''
-    session['movies'] = cataloghandl.fetchMovies( catalogpath )
-    app.logger.debug( 'movies: %s' % session['movies'] )
+        session['movies'] = cataloghandl.fetchMovies( catalogpath )
+        session['lastmod_ts'] = os.path.getmtime( catalogpath )
     return render_template( 'fhc_movies.html',movies=session['movies'] )
 
+
+@app.route( '/movie/<string:title>/<number>',methods=[ 'GET' ] )
+def movie_for(title, number):
+    # TODO: write the logic ;)
+    catalogpath = '/'.join( [environ['CATALOGROOT'],environ['CATALOGFILE']] )
+    return flask.jsonify(cataloghandl.fetchMovieFor( title,number,catalogpath ))
 
 
 # Inner Mechanisms Space
