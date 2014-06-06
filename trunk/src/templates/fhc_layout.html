@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FleecyHome Centre</title>
+    <link rel='shotcut icon' type='image/png' 
+          href="{{url_for( 'static',filename='img/fleecy-full.png' )}}" ></link>
+    
+    <link rel='stylesheet' type='text/css' href="{{url_for( 'static',filename='css/fhc-style.css' )}}" ></link>
+    <script src="{{url_for( 'static',filename='js/jquery-1.11.1.min.js' )}}"></script>
+</head>
+<body>
+    
+    <div id='p-header-wrapper'>
+        <span id='brand-img-span' class='brand-span'>
+            <img id='brand-image' 
+                 src="{{url_for( 'static',filename='img/fleecy-full.png' )}}" />
+        </span>
+        <span id='brand-title-span' class='brand-span'>
+            <a href="{{url_for('root')}}" id='brand-title' class='unav-menu-item'>
+                FleecyHome Centre
+            </a>
+        </span>
+        
+        <span id='unavbar-span' class='brand-span'>
+            <span>
+                <a href="{{url_for('movies')}}" class='unav-menu-item'>Movies</span>
+            </span>
+        </span>
+    </div>
+    
+    <div id='p-content-wrapper'>
+        <div id='p-content-div'>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    
+    <div id='p-footer-wrapper'>
+    </div>
+    
+</body>
+</html>

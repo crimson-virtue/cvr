@@ -1,0 +1,117 @@
+
+#unavbar-span {
+    position: relative;
+    left: 60%;
+}
+
+.brand-span{
+    height: 45px;
+    line-height: 45px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#brand-img-span {
+    width: 65px;
+    height: 50px;
+}
+
+#brand-image {
+    z-index: 3;
+    padding: 2px;
+    padding-left:  10px;
+    padding-right: 10px;
+    width: 48px;
+    height: 48px;
+}
+
+.unav-menu-item {
+    height: 48px;
+    line-height: 48px;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.unav-menu-item:hover {
+    color: #0066FF;
+}
+
+#brand-title {
+    position: relative;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 21px;
+}
+
+
+
+#p-header-wrapper{
+    position: absolute;
+    width: 100%;
+    min-width: 1024px;
+    height: 50px;
+    top: 0px;
+    left: 0px;
+    background: #F5F5F5;
+
+    border-top: #003366 1px solid;
+    border-bottom: #003366 1px solid;
+    box-shadow: 3px 3px 2px #A8A8A8;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#p-content-wrapper {
+    position: absolute;
+    top: 73px;
+    left: 50%;
+}
+
+#p-content-div{
+    position: relative;
+    left: -475px;
+    width: 950px;
+    height: 800px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+
+
+#movie-list-wrapper {
+    padding: 5px;
+    margin:  0;
+    width:  210px;
+    height: 600px;
+    
+    border: #003366 1px solid;
+    border-radius: 7px 7px 7px 7px;
+}
+
+#movie-list-scroll {
+    position: relative;
+    top: 5px;
+    left: -4px;
+    width: 102%;
+    max-height: 590px;
+    height: 590px;
+    overflow-y: auto;   
+    
+    border: rgb( 128,0,0 ) 1px dotted;
+}
+
+
+#movie-list {
+    padding: 0;
+    margin:  0;
+    list-style: none;
+}
+
+.movie-item {
+    text-align: center;
+}
+
+.movie-item-ref {
+    text-decoration: none;
+    font-size: 16px;
+}

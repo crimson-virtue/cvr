@@ -1,0 +1,26 @@
+{% extends 'fhc_layout.html' %}
+
+{% block content %}
+<div id='movie-list-wrapper'>
+    <div id='movie-list-scroll'>
+    </div>
+</div>
+
+<div id='movie-details-wrapper'>
+</div>
+
+<script>
+    var movies = {{ movies|tojson|safe }};
+    var $_mscroll = $('#movie-list-scroll');
+
+    
+    function buildMovieScrollInto(container, movies) {
+        for(var i = 0; i < movies.length; i++){
+            console.log( movies[i] );
+        }
+    }
+
+    
+    buildMovieScrollInto( $_mscroll,movies ); 
+</script>
+{% endblock content %}
