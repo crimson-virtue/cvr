@@ -56,6 +56,12 @@
     left: 0px;
     background: #F5F5F5;
 
+
+    /*background: -webkit-linear-gradient( black,#F5F5F5 );
+    background: -o-linear-gradient( black,#F5F5F5 );
+    background: -moz-linear-gradient( black,#F5F5F5 );
+    background: linear-gradient( black,#F5F5F5 );*/
+    
     border-top: #003366 1px solid;
     border-bottom: #003366 1px solid;
     box-shadow: 3px 3px 2px #A8A8A8;
