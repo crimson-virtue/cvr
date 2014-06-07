@@ -1,40 +1,92 @@
 {% extends 'fhc_layout.html' %}
 
 {% block content %}
-<div id='movie-list-wrapper'>
+<span id='movie-list-wrapper'>
     <div id='movie-list-scroll'>
-        <div id='list-dummy'></div>
+        <div id='movie-list'>
+        {% for number,title in movies.iteritems()|sort %}
+            <div id="{{ number }}::{{ title }}" class='movie-list-row'>
+                <a href="{{url_for( 'movie_for',title=title,number=number )}}"
+                   class='movie-item-ref' draggable='true'>{{title}}</a>
+            </div>
+        {% endfor %}
+        </div>
     </div>
-</div>
+</span>
 
-<div id='movie-details-wrapper'>
-</div>
+<span id='movie-details-wrapper'>
+    <div id='filter-wrapper' >
+        <span id='filter-label-wrapper' class='filter-td'>
+            <label id='filter-label' for='filter-input'>Search</label>
+        </span>
+        <span id='filter-input-wrapper' class='filter-td'>
+            <input type='text' oninput="filterChanged( this )" id='filter-input' />
+        </span>
+    </div>
+    
+    <div id='details-wrapper'>
+    </div>
+</span>
 
 <script>
     var movies = {{ movies|tojson|safe }};
-    var $_dummy = $('#list-dummy');
+    var $_mlrows = $('.movie-list-row');
+    var $_mlist  = $('#movie-list');
 
-    
-    function buildMovieScrollInto(placeholder, movies) {
-        var result = "<div>";
-        for(var key in movies) {
-            var mtitle = movies[key];
-            result += "<div class='movie-list-row' >"+ 
-                       "<a href='{{url_for( 'movie_for',title='"+ mtitle +"',number='"+ key +"' )}}' class='movie-item-ref' id='"+( key+':'+mtitle )+"' draggable='true' hidefocus='true' >"+ mtitle +"</a>"+
-                       "</div>";
+    function buildMovieDetails(data, textStatus, jqXhr) {
+        alert( data );
+    }
+
+
+    function fetchFrom(list, filter) {
+        var res = new Array();
+        for(var i = 0; i < list.length; i++) {
+            var $_item  = $( list[i] );
+            var IDparts = $_item.attr('id').split('::');
+            
+            if( IDparts[0].indexOf(filter) > -1 || 
+                IDparts[1].indexOf(filter) > -1 ) {
+                res.push( $_item );
+            }
         }
-        result += "</div>";
-        placeholder.replaceWith( result );
+        return res;
+    }
+
+
+    function filterChanged( input ) {
+        var filter_str = $(input).val();
+        
+        $_mlist.empty();
+        var rows;
+        
+        if( filter_str.length <= 0 ) {
+            rows = $_mlrows;
+        } else {
+            rows = fetchFrom( $_mlrows,filter_str );
+        }
+        
+        $_mlist.append( rows );
     }
 
     
     function onMovieClick( event ) {
         event.preventDefault();
+        
+        var $_this = $(this);
+        
+        // Send an Ajax request to the server for the data
+        $.ajax({
+            url: $_this.attr('href'),
+            processData: false,
+            dataType: 'json',
+            success: buildMovieDetails
+        });
+        
+        // while waiting, set the selected item ;)
         $('.movie-item-ref').removeClass('selected-movie');
-        $(this).addClass('selected-movie');
+        $_this.addClass('selected-movie');
     }
     
-    buildMovieScrollInto( $_dummy,movies ); 
     $('.movie-item-ref').click( onMovieClick );
 </script>
 {% endblock content %}

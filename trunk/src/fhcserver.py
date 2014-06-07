@@ -52,9 +52,10 @@ def movies():
 
 @app.route( '/movie/<string:title>/<number>',methods=[ 'GET' ] )
 def movie_for(title, number):
-    # TODO: write the logic ;)
+    app.logger.debug(' %s: %s' % ( number,title ))
     catalogpath = '/'.join( [environ['CATALOGROOT'],environ['CATALOGFILE']] )
     return flask.jsonify(cataloghandl.fetchMovieFor( title,number,catalogpath ))
+
 
 
 # Inner Mechanisms Space

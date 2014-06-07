@@ -23,8 +23,9 @@ def fetchMovies(catalogpath):
     res = {}
     parser = etree.XMLParser(recover=True)
     for tag in etree.parse( open(catalogpath),parser ).findall('//Movie'):
-        res[ tag.attrib['Number'] ] = tag.attrib['OriginalTitle']
+        res[ int(tag.attrib['Number']) ] = tag.attrib['OriginalTitle']
     return res
+
 
 def fetchMovieFor(title, number, catalogpath):
     '''
@@ -38,5 +39,6 @@ def fetchMovieFor(title, number, catalogpath):
                         fetch the details
     @return: a dictionary containing the relevant data.
     '''
-    # TODO: implement
-    return dict({ 'title':'Dummy Title','number':13,'data':None })
+    filtr_str = '//Movie[@Number="%s"]' % number
+    parser = etree.XMLParser(recover=True)
+    return etree.parse( open(catalogpath),parser ).find(filtr_str).attrib

@@ -79,24 +79,36 @@
 
 
 #movie-list-wrapper {
+    position: relative;
+    top: 24px;
+    
     padding: 5px;
     margin:  0;
     width:  210px;
-    height: 600px;
+    height: 627px;
     
+    display: inline-block;
+    
+/*    background-color: #C2E0FF;*/
     border: #003366 1px solid;
     border-radius: 7px 7px 7px 7px;
 }
 
 #movie-list-scroll {
     position: relative;
-    top: 5px;
+    top: 2px;
     left: -4px;
-    width: 103%;
-    max-height: 590px;
-    max-width: 103%;
-    height: 590px;
-    overflow: auto;   
+    width: 104%;
+    max-height: 621px;
+    max-width: 104%;
+    height: 621px;
+    
+    background-color: white;
+    border-top:    #003366 1px solid;
+    border-bottom: #003366 1px solid;
+    
+    overflow-y: scroll;
+    overflow-x: auto;
 }
 
 
@@ -110,8 +122,9 @@
     margin:  0;
     padding: 0;
     margin-bottom: 2px;
-    height: 18px;
-    line-height: 18px;
+    min-height: 18px;
+    height: auto;
+    line-height: auto;
     text-align: center;
 }
 
@@ -119,12 +132,13 @@
     width: 99%;
     vertical-align: middle;
     display: inline-block;
-    height: 18px;
-    line-height: 18px;
+    min-height: 18px;
+    height: auto;
+    line-height: auto;
     text-decoration: none;
     font-size: 13px;
     color: black;
-    border-radius: 7px 7px 7px 7px;
+    border-radius: 3px 3px 3px 3px;
 }
 
 .movie-item-ref:hover {
@@ -134,4 +148,66 @@
 .selected-movie {
     color: #0066FF;
     background-color: #F8F8F8;
+}
+
+#movie-details-wrapper {
+    position: relative;
+    top: -584px;
+
+    width:  700px;
+    height: 610px;
+    
+    display: inline-block;
+
+    border-radius: 7px 7px 7px 7px;
+}
+
+#filter-wrapper {
+    position: relative;
+    top: 4px;
+    
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    
+    padding: 5px;
+    margin:  5px;
+
+    display: inline-block;
+    vertical-align: middle;    
+    border-radius: 7px 7px 7px 7px;
+    border: #003366 1px solid;
+}
+
+#filter-label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+#filter-input-wrapper {
+    display: inline-block;
+    width: 80%;
+}
+
+#filter-input {
+    width: 100%;
+}
+
+.filter-td {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+
+#details-wrapper {
+    padding: 5px;
+    margin:  5px;
+
+    width: 100%;
+    height: 580px;
+    
+    border-radius: 7px 7px 7px 7px;
+    border: #003366 1px solid;
 }
